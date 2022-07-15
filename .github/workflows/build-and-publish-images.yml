@@ -32,15 +32,16 @@ jobs:
         with:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ env.DOCKERHUB_TOKEN }}
-      - name: Build and push rapidsai/manylinux container
-        timeout-minutes: 30
-        uses: docker/build-push-action@v3
-        with:
-          file: Dockerfile
-          platforms: linux/${{ matrix.labels[2] }}
-          push: ${{ inputs.push }}
-          pull: true
-          build-args: |
-            CPU_ARCH=${{ matrix.cpu-arch }}
-            RHEL_CUDA_REPO=${{ matrix.rhel-cuda-repo }}
-          tags: rapidsai/manylinux:${{ matrix.labels[2] }}
+      - name: Build rapidsai/manylinux containers
+        run: >
+          docker build
+          -f Dockerfile
+          --build-arg CPU_ARCH=${{ matrix.cpu-arch }}
+          --build-arg RHEL_CUDA_REPO=${{ matrix.rhel-cuda-repo }}
+          -t rapidsai/manylinux:${{ matrix.labels[2] }}
+          --pull
+          .
+      - name: Push rapidsai/manylinux containers to DockerHub
+        if: ${{ inputs.push }}
+        run: >
+          docker push rapidsai/manylinux:${{ matrix.labels[2] }}
