@@ -40,7 +40,7 @@ jobs:
           --build-arg RHEL_CUDA_REPO=${{ matrix.rhel-cuda-repo }}
           -t rapidsai/manylinux:${{ matrix.labels[2] }}
           --pull
-          .
+          ./context
       - name: Push rapidsai/manylinux containers to DockerHub
         if: ${{ inputs.push }}
         run: >
