@@ -10,7 +10,7 @@
 # the requested version string are exactly the same and it sets
 # PACKAGE_VERSION_COMPATIBLE if the current version is >= requested version.
 
-set(PACKAGE_VERSION 1.12.1)
+set(PACKAGE_VERSION 1.11.2)
 
 if (PACKAGE_FIND_VERSION_RANGE)
   # Package version must be in the requested version range

@@ -6,5 +6,5 @@
 
 include("${CMAKE_CURRENT_LIST_DIR}/ucx-targets.cmake")
 
-set(UCX_LIBRARIES "${exec_prefix}/lib")
+set(UCX_LIBRARIES "${exec_prefix}/lib64")
 set(UCX_INCLUDE_DIRS "${prefix}/include")
