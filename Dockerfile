@@ -10,7 +10,7 @@ RUN dnf install -y epel-release && \
  	dnf update -y && \
 	yum config-manager --add-repo ${RHEL_CUDA_REPO} && \
 	dnf install -y kernel-devel && \
-	dnf install -y cuda
+	dnf install -y cuda libnccl libnccl-devel
 
 ENV CUDA_HOME="/usr/local/cuda"
 ENV PATH="${PATH}:${CUDA_HOME}/bin"
