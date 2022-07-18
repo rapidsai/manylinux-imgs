@@ -13,5 +13,7 @@ RUN dnf install -y epel-release && \
         dnf install -y cuda libnccl libnccl-devel && \
         dnf install -y ucx ucx-devel
 
+COPY ucx_cmake /usr/lib64/cmake
+
 ENV CUDA_HOME="/usr/local/cuda"
 ENV PATH="${PATH}:${CUDA_HOME}/bin"
