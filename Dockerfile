@@ -3,8 +3,9 @@ FROM quay.io/pypa/manylinux_2_28_${CPU_ARCH}
 
 ARG RHEL_CUDA_REPO
 
-# copy install-build-requirements script
+# copy helper scripts
 COPY install-build-requirements.sh /install-build-requirements.sh
+COPY install-and-get-site-packages.sh /install-and-get-site-packages.sh
 
 RUN dnf install -y epel-release && \
         dnf update -y && \
